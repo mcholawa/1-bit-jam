@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameMenager GameMenager;
     public int movementIndex = 0;
-    //private Game;
+    public GameObject gameMenagerObject;
+    public int speed = 1;
+    private GameMenager gameMenagerScript;
+    private bool isMoving = false;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(GameMenager.posts.Length);
+        gameMenagerScript = gameMenagerObject.GetComponent<GameMenager>();
+        Debug.Log(gameMenagerScript.posts.Length);
     }
 
     // Update is called once per frame
@@ -18,17 +21,38 @@ public class PlayerController : MonoBehaviour
     {
         PlayerMovement();
     }
-    void PlayerMovement(){
-        if (Input.GetKeyDown(KeyCode.RightArrow)){
-            if(movementIndex < GameMenager.posts.Length) {
-                movementIndex ++;
-                Debug.Log(GameMenager.posts[movementIndex]);
+    void PlayerMovement()
+    {
+    if (!isMoving){
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (movementIndex < gameMenagerScript.posts.Length - 1)
+            {
+                movementIndex++;
+                Debug.Log(gameMenagerScript.posts[movementIndex]);
+                isMoving = true;
             }
         }
-        else if(Input.GetKeyDown(KeyCode.LeftArrow)){
-            if(movementIndex > 0) {
-                movementIndex --;
-                Debug.Log("Left");
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (movementIndex > 0)
+            {
+                movementIndex--;
+                Debug.Log(gameMenagerScript.posts[movementIndex]);
+                isMoving = true;
+            }
+        }
+        }
+        else{
+            Transform newPosition = gameMenagerScript.posts[movementIndex].transform.GetChild(0);
+            if (transform.position == newPosition.position)
+            {
+                isMoving = false;
+            }
+            else
+            {
+
+                transform.position = Vector3.MoveTowards(transform.position, newPosition.position, speed * Time.deltaTime);
             }
         }
     }
