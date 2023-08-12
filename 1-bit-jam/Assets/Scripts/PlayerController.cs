@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,9 +10,12 @@ public class PlayerController : MonoBehaviour
     public int speed = 1;
     private GameMenager gameMenagerScript;
     private bool isMoving = false;
+    private SpriteRenderer playerSprite;
+    public TMP_Text textDistance; 
     // Start is called before the first frame update
     void Start()
     {
+        playerSprite = GetComponent<SpriteRenderer>();
         gameMenagerScript = gameMenagerObject.GetComponent<GameMenager>();
         Debug.Log(gameMenagerScript.posts.Length);
     }
@@ -23,27 +27,41 @@ public class PlayerController : MonoBehaviour
     }
     void PlayerMovement()
     {
-    if (!isMoving){
+    float distanceToDestination = Vector3.Distance(transform.position, gameMenagerScript.posts[movementIndex].transform.GetChild(0).position);
+    
+   
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (movementIndex < gameMenagerScript.posts.Length - 1)
+            Debug.Log("right");
+            Debug.Log(distanceToDestination);
+            if (movementIndex < gameMenagerScript.posts.Length - 1 && distanceToDestination < 1.5)
             {
                 movementIndex++;
-                Debug.Log(gameMenagerScript.posts[movementIndex]);
+                Debug.Log("Moving");
                 isMoving = true;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) )
         {
-            if (movementIndex > 0)
+            Debug.Log("left");
+            Debug.Log(distanceToDestination);
+            if (movementIndex > 0 && distanceToDestination < 1.5)
             {
+                Debug.Log("moving");
                 movementIndex--;
                 Debug.Log(gameMenagerScript.posts[movementIndex]);
                 isMoving = true;
             }
         }
+    
+     if (distanceToDestination < 1.5){
+        playerSprite.color = new Color(1, 1, 1, 0.5f);
         }
-        else{
+    else{
+        playerSprite.color = new Color(1, 1, 1, 1f);
+    }
+    if (isMoving){
+        textDistance.SetText(distanceToDestination.ToString());
             Transform newPosition = gameMenagerScript.posts[movementIndex].transform.GetChild(0);
             if (transform.position == newPosition.position)
             {
@@ -51,9 +69,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-
                 transform.position = Vector3.MoveTowards(transform.position, newPosition.position, speed * Time.deltaTime);
             }
-        }
+    }
     }
 }
