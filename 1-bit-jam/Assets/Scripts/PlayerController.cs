@@ -26,7 +26,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+       
     }
+
     void PlayerMovement()
     {
     float distanceToDestination = Vector3.Distance(transform.position, gameMenagerScript.posts[movementIndex].transform.GetChild(0).position);
@@ -41,7 +43,7 @@ public class PlayerController : MonoBehaviour
                 movementIndex++;
                 Debug.Log("Moving");
                 isMoving = true;
-                gameMenagerScript.changeEnergyAmount(energyCost);
+                gameMenagerScript.ChangeEnergyAmount(energyCost);
             }
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) )
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("moving");
                 movementIndex--;
                 isMoving = true;
-                gameMenagerScript.changeEnergyAmount(energyCost);
+                gameMenagerScript.ChangeEnergyAmount(energyCost);
             }
         }
     

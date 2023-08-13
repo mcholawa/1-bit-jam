@@ -8,6 +8,8 @@ using TMPro;
 public class GameMenager : MonoBehaviour
 {
     public GameObject[] posts;
+    public GameOverScreen GameOverScreen;
+    public GameObject player;
     public int energy;
     public TMP_Text energyText;
     // Start is called before the first frame update
@@ -16,23 +18,29 @@ public class GameMenager : MonoBehaviour
         energy = 100;
         posts = GameObject.FindGameObjectsWithTag("Post").OrderBy(go => go.transform.position.x).ToArray();
         Debug.Log(posts[0]);
-        InvokeRepeating("decreaseEnergy", 0, 1.0f);
+        InvokeRepeating("DecreaseEnergy", 0, 1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+         if (energy <= 0){GameOver();}
     }
-    void decreaseEnergy() {
+    void GameOver()
+    {
+        GameOverScreen.Setup();
+        player.SetActive(false);
+        CancelInvoke();
+   }
+    void DecreaseEnergy() {
         energy --;
-        updateEnergyCount();
+        UpdateEnergyCount();
     }
-    public void changeEnergyAmount(int eAmount){
+    public void ChangeEnergyAmount(int eAmount){
         energy += eAmount;
-        updateEnergyCount();
+        UpdateEnergyCount();
     }
-    void updateEnergyCount(){
+    void UpdateEnergyCount(){
         energyText.SetText("Energy: " + energy.ToString());
     }
 }
