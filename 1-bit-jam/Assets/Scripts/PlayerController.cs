@@ -12,9 +12,11 @@ public class PlayerController : MonoBehaviour
     private bool isMoving = false;
     private SpriteRenderer playerSprite;
     public TMP_Text textDistance; 
+    public int energyCost;
     // Start is called before the first frame update
     void Start()
     {
+        energyCost = -5;
         playerSprite = GetComponent<SpriteRenderer>();
         gameMenagerScript = gameMenagerObject.GetComponent<GameMenager>();
         Debug.Log(gameMenagerScript.posts.Length);
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
                 movementIndex++;
                 Debug.Log("Moving");
                 isMoving = true;
+                gameMenagerScript.changeEnergyAmount(energyCost);
             }
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) )
@@ -49,8 +52,8 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("moving");
                 movementIndex--;
-                Debug.Log(gameMenagerScript.posts[movementIndex]);
                 isMoving = true;
+                gameMenagerScript.changeEnergyAmount(energyCost);
             }
         }
     
