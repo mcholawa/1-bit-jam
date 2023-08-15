@@ -9,6 +9,7 @@ public class GameMenager : MonoBehaviour
 {
     public GameObject[] posts;
     public GameOverScreen GameOverScreen;
+    public NextLevelScreen NextLevelScreen;
     public GameObject player;
     public int energy;
     public TMP_Text energyText;
@@ -29,6 +30,12 @@ public class GameMenager : MonoBehaviour
     void GameOver()
     {
         GameOverScreen.Setup();
+        player.SetActive(false);
+        CancelInvoke();
+   }
+   public void NextLevel()
+    {
+        NextLevelScreen.Setup();
         player.SetActive(false);
         CancelInvoke();
    }

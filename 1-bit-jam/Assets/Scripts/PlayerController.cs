@@ -28,7 +28,12 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
        
     }
-
+    void OnCollisionEnter2D(Collision2D col){
+        Debug.Log(col.gameObject.name + "");
+        if(col.gameObject.name == "EndingGoal"){
+            gameMenagerScript.NextLevel();
+        }
+     }
     void PlayerMovement()
     {
     float distanceToDestination = Vector3.Distance(transform.position, gameMenagerScript.posts[movementIndex].transform.GetChild(0).position);
@@ -78,4 +83,5 @@ public class PlayerController : MonoBehaviour
             }
     }
     }
+    
 }
