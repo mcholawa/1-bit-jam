@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
         if(col.gameObject.name == "EndingGoal"){
             gameMenagerScript.NextLevel();
         }
+        else if(col.gameObject.name == "EnergyBall"){
+            gameMenagerScript.ChangeEnergyAmount(15);
+            col.gameObject.SetActive(false);
+        }
+        
      }
     void PlayerMovement()
     {
