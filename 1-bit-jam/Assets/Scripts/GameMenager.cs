@@ -8,6 +8,7 @@ using TMPro;
 public class GameMenager : MonoBehaviour
 {
     public GameObject[] posts;
+     public GameObject[] upPosts;
     public GameOverScreen GameOverScreen;
     public NextLevelScreen NextLevelScreen;
     public GameObject player;
@@ -18,6 +19,7 @@ public class GameMenager : MonoBehaviour
     {
         energy = 100;
         posts = GameObject.FindGameObjectsWithTag("Post").OrderBy(go => go.transform.position.x).ToArray();
+        upPosts = GameObject.FindGameObjectsWithTag("UpPost").OrderBy(go => go.transform.position.x).ToArray();
         Debug.Log(posts[0]);
         InvokeRepeating("DecreaseEnergy", 0, 1.0f);
     }
