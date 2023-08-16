@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
 
     }
+    //collision manager
     void OnCollisionEnter2D(Collision2D col)
     {
         Debug.Log(col.gameObject.name + "");
@@ -41,6 +42,10 @@ public class PlayerController : MonoBehaviour
         {
             gameMenagerScript.ChangeEnergyAmount(15);
             col.gameObject.SetActive(false);
+            
+        }
+        else if (col.gameObject.name== "Wall"){
+            gameMenagerScript.GameOver();
         }
 
     }

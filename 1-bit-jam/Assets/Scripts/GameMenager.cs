@@ -29,7 +29,8 @@ public class GameMenager : MonoBehaviour
     {
          if (energy <= 0){GameOver();}
     }
-    void GameOver()
+    //game over event
+    public void GameOver()
     {
         GameOverScreen.Setup();
         player.SetActive(false);
