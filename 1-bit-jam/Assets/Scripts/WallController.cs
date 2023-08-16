@@ -5,8 +5,7 @@ using UnityEngine;
 public class WallController : MonoBehaviour
 {
     // Start is called before the first frame update
-    //rotation is commented in case it will be necessary
-    //public canRotate = false;
+    //rotation is commented in case it will be necessary may be necessary
     public float speed; 
     public GameObject startingPoint;
     public GameObject destinationPoint;

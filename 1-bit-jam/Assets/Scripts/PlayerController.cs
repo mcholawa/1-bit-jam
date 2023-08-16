@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     private GameMenager gameMenagerScript;
     private bool isMoving = false;
     private SpriteRenderer playerSprite;
-    public TMP_Text textDistance;
     public int energyCost;
     public bool isUp = false;
     // Start is called before the first frame update
@@ -146,7 +145,6 @@ public class PlayerController : MonoBehaviour
         }
         if (isMoving)
         {
-            textDistance.SetText(distanceToDestination.ToString());
             Transform newPosition;
             if(isUp){
             newPosition = gameMenagerScript.upPosts[movementIndex].transform.GetChild(0);
