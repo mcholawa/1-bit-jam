@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Follow: {fileID: 851196494}
   m_Lens:
     FieldOfView: 53.130104
-    OrthographicSize: 3
+    OrthographicSize: 4.62
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -730,7 +730,7 @@ Camera:
   far clip plane: 1000
   field of view: 53.130104
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 4.62
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1347,7 +1347,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1612396772}
   m_Father: {fileID: 0}
@@ -1370,6 +1370,7 @@ MonoBehaviour:
   speed: 20
   energyCost: -5
   isUp: 0
+  scaleSpeed: 4
 --- !u!58 &851196496
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1385,7 +1386,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.32
 --- !u!50 &851196497
 Rigidbody2D:
   serializedVersion: 4
@@ -2144,7 +2145,7 @@ GameObject:
   - component: {fileID: 1436572321}
   - component: {fileID: 1436572322}
   m_Layer: 5
-  m_Name: Square
+  m_Name: DarknessSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2382,7 +2383,7 @@ RectTransform:
   m_GameObject: {fileID: 1612396771}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 851196494}
@@ -2434,7 +2435,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8177471321811730583, guid: 87aaca0a643d54397ba969dab4fc8875, type: 3}
+  m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
