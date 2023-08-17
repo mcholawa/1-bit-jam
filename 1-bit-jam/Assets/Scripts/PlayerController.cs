@@ -14,20 +14,26 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer playerSprite;
     public int energyCost;
     public bool isUp = false;
+    private GameObject spriteMask;
     // Start is called before the first frame update
     void Start()
     {
         energyCost = -5;
         playerSprite = GetComponent<SpriteRenderer>();
         gameMenagerScript = gameMenagerObject.GetComponent<GameMenager>();
-        Debug.Log(gameMenagerScript.posts.Length);
+        //Debug.Log(gameMenagerScript.posts.Length);
+        spriteMask = gameObject.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerMovement();
-
+        RotateSpriteMaks();
+    }
+    void RotateSpriteMaks(){
+        float degreesPerSecond = 50;
+        spriteMask.transform.Rotate( new Vector3(0, 0,degreesPerSecond ) * Time.deltaTime);
     }
     //collision manager
     void OnCollisionEnter2D(Collision2D col)
