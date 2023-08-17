@@ -141,14 +141,6 @@ public class PlayerController : MonoBehaviour
                Debug.Log("Nie ma tam nic :(");
              }
         }
-        if (distanceToDestination < 1.5)
-        {
-            playerSprite.color = new Color(1, 1, 1, 0.5f);
-        }
-        else
-        {
-            playerSprite.color = new Color(1, 1, 1, 1f);
-        }
         if (isMoving)
         {
             Transform newPosition;
