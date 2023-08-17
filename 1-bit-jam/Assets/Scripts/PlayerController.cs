@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public int energyCost;
     public bool isUp = false;
     private GameObject spriteMask;
+    private bool isExpanding = false;
+    private Vector3 scaleChange = new Vector3(1f, 1f, 1f);
+    public float scaleSpeed = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,17 @@ public class PlayerController : MonoBehaviour
     {
         PlayerMovement();
         RotateSpriteMaks();
+        //scaling the mask 
+        if(isExpanding){
+            spriteMask.transform.localScale += scaleChange * Time.deltaTime * scaleSpeed;
+            if(Vector3.Distance(spriteMask.transform.localScale, new Vector3(16f, 16f, 16f)) < 1.0f ){
+                scaleChange = -scaleChange;
+            }
+            else if(Vector3.Distance(spriteMask.transform.localScale, new Vector3(4f, 4f, 4f)) < 1.0f && scaleChange.x < 0){
+                    isExpanding = false;
+                    scaleChange = -scaleChange;
+            }
+        }
     }
     void RotateSpriteMaks(){
         float degreesPerSecond = 50;
@@ -141,6 +155,10 @@ public class PlayerController : MonoBehaviour
                Debug.Log("Nie ma tam nic :(");
              }
         }
+        else if(Input.GetKeyDown(KeyCode.Space)){
+            Debug.Log("Space");
+            spaceEvent();
+        }
         if (isMoving)
         {
             Transform newPosition;
@@ -159,5 +177,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+    void spaceEvent(){
+        if (gameMenagerScript.energy > 10 && !isExpanding){
+            isExpanding = true;
+            gameMenagerScript.ChangeEnergyAmount(-10);
+        }
+    }
 }
