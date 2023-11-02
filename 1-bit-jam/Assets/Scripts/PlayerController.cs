@@ -126,15 +126,19 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Bzzzz");
             }
 
-            if (movementIndex > 0 && distanceToDestination < 1.5 && distanceToDestination < 1.5 && distanceToDestination <= 6)
+            if (movementIndex > 0 && distanceToDestination < 1.5 && distanceToDestination <= 6)
             {
                 float distanceToNext = Vector3.Distance(transform.position, nextTarget.position);
-                if (distanceToNext < 7)
+                Debug.Log(distanceToNext);
+                if (distanceToNext < 6)
                 {
                     movementIndex--;
                     Debug.Log("moving");
                     isMoving = true;
                     gameMenagerScript.ChangeEnergyAmount(energyCost);
+                }
+                else{
+                    Debug.Log("Bzzzz");
                 }
             }
         }
