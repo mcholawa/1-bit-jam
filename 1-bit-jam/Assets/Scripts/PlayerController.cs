@@ -85,11 +85,12 @@ public class PlayerController : MonoBehaviour
             if(isUp){
             currentPostsLength = gameMenagerScript.upPosts.Length;
             distanceToDestination = Vector3.Distance(transform.position, gameMenagerScript.upPosts[movementIndex].transform.GetChild(0).position);
-                if(movementIndex < currentPostsLength - 1) nextTarget = gameMenagerScript.upPosts[movementIndex + 1].transform.GetChild(0);
+                if(movementIndex < currentPostsLength - 1) {nextTarget = gameMenagerScript.upPosts[movementIndex + 1].transform.GetChild(0);}
             }else{
             currentPostsLength = gameMenagerScript.posts.Length;
             distanceToDestination = Vector3.Distance(transform.position, gameMenagerScript.posts[movementIndex].transform.GetChild(0).position);
-                if(movementIndex < currentPostsLength - 1) nextTarget = gameMenagerScript.posts[movementIndex +1].transform.GetChild(0);
+                if(movementIndex < currentPostsLength - 1) {nextTarget = gameMenagerScript.posts[movementIndex +1].transform.GetChild(0);}
+                
             }
             if (movementIndex < currentPostsLength - 1 && distanceToDestination < 1.5 && distanceToDestination <= 6)
             {
@@ -101,6 +102,13 @@ public class PlayerController : MonoBehaviour
                     isMoving = true;
                     gameMenagerScript.ChangeEnergyAmount(energyCost);
                 }
+                else{
+                    Debug.Log("Bzzzz");
+                }
+            }
+            //if you are on the last platform
+            else{
+                Debug.Log("Bzzzz");
             }
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -113,6 +121,11 @@ public class PlayerController : MonoBehaviour
             distanceToDestination = Vector3.Distance(transform.position, gameMenagerScript.posts[movementIndex].transform.GetChild(0).position);
             nextTarget = gameMenagerScript.upPosts[movementIndex-1].transform.GetChild(0);
             }
+            //If you are on the first platform:
+            else if(movementIndex == 0){
+                Debug.Log("Bzzzz");
+            }
+
             if (movementIndex > 0 && distanceToDestination < 1.5 && distanceToDestination < 1.5 && distanceToDestination <= 6)
             {
                 float distanceToNext = Vector3.Distance(transform.position, nextTarget.position);
