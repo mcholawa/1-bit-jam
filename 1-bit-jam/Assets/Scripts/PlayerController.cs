@@ -95,16 +95,11 @@ public class PlayerController : MonoBehaviour
             if (movementIndex < currentPostsLength - 1 && distanceToDestination < 1.5 && distanceToDestination <= 6)
             {
                 float distanceToNext = Vector3.Distance(transform.position, nextTarget.position);
-                if (distanceToNext < 7)
-                {
                     movementIndex++;
                     Debug.Log("Moving");
                     isMoving = true;
                     gameMenagerScript.ChangeEnergyAmount(energyCost);
-                }
-                else{
-                    Debug.Log("Bzzzz");
-                }
+                
             }
             //if you are on the last platform
             else{
@@ -123,23 +118,18 @@ public class PlayerController : MonoBehaviour
             }
             //If you are on the first platform:
             else if(movementIndex == 0){
-                Debug.Log("Bzzzz");
+                Debug.Log("Bz");
             }
 
             if (movementIndex > 0 && distanceToDestination < 1.5 && distanceToDestination <= 6)
             {
                 float distanceToNext = Vector3.Distance(transform.position, nextTarget.position);
                 Debug.Log(distanceToNext);
-                if (distanceToNext < 6)
-                {
                     movementIndex--;
                     Debug.Log("moving");
                     isMoving = true;
                     gameMenagerScript.ChangeEnergyAmount(energyCost);
-                }
-                else{
-                    Debug.Log("Bzzzz");
-                }
+    
             }
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) && !isUp){
