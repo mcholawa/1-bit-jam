@@ -5,14 +5,20 @@ using UnityEngine;
 public class TurretBulletControler : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private GameObject target;
+    public Rigidbody2D rigidBody;
+    public float angleChangingSpeed;
+    public float movementSpeed;
 
-    // Update is called once per frame
-    void Update()
+    void Start(){
+        target =  GameObject.FindWithTag("Player");
+    }
+    void FixedUpdate ()
     {
-        
+        Vector2 direction = (Vector2)target.transform.position - rigidBody.position;
+        direction.Normalize ();
+        float rotateAmount = Vector3.Cross (direction, transform.up).z;
+        rigidBody.angularVelocity = -angleChangingSpeed * rotateAmount;
+        rigidBody.velocity = transform.up * movementSpeed;
     }
 }
