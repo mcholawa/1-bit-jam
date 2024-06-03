@@ -1,0 +1,16 @@
+Make narration system:
+    Create text box prefab that appears with text animation
+    Pick Font
+    Figure out how to save and manage text content for the game
+Pick music (3 songs for 3 levels)
+SFX:
+    Buzzing - when movement is not available
+    Zap when moving
+    constant ambience electric sounds
+    this ambience should be louder when activating "spacebar" lightup
+Spirtes and Animations
+    Sprites for upPosts
+    Animations for movement of the Player
+    Sprites and Animations for Moving Walls
+    Sprites and Animations for Turrets and Bullets
+    Boss star Sprite and animation
