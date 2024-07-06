@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementIndex: 0
-  GameManagerObject: {fileID: 0}
+  GameManagerObject: {fileID: 90060936}
   speed: 20
   energyCost: -5
   isUp: 0
