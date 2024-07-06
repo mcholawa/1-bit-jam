@@ -11,9 +11,12 @@ public class GameMenager : MonoBehaviour
      public GameObject[] upPosts;
     public GameOverScreen GameOverScreen;
     public NextLevelScreen NextLevelScreen;
+
+    public GameObject narrationManager;
     public GameObject player;
     public int energy;
     public TMP_Text energyText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class GameMenager : MonoBehaviour
         upPosts = GameObject.FindGameObjectsWithTag("UpPost").OrderBy(go => go.transform.position.x).ToArray();
        // Debug.Log(posts[0]);
         InvokeRepeating("DecreaseEnergy", 0, 1.0f);
+        TriggerNextNarration();
     }
 
     // Update is called once per frame
@@ -52,5 +56,8 @@ public class GameMenager : MonoBehaviour
     }
     void UpdateEnergyCount(){
         energyText.SetText("Energy: " + energy.ToString());
+    }
+    public void TriggerNextNarration(){
+        narrationManager.GetComponent<NarrationManager>().ShowNextText();
     }
 }
