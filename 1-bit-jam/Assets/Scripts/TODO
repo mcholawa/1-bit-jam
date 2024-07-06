@@ -8,6 +8,9 @@ SFX:
     Zap when moving
     constant ambience electric sounds
     this ambience should be louder when activating "spacebar" lightup
+Tutorial
+    Create tutorial system
+    Add Instruction of movement and the goal.
 Spirtes and Animations
     Sprites for upPosts - in Unity
     Animations for movement of the Player - in Unity
