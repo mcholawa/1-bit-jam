@@ -8,6 +8,9 @@ SFX:
     Zap when moving
     constant ambience electric sounds
     this ambience should be louder when activating "spacebar" lightup
+Level maker
+    Figure out how to implement level system maker:
+    (...)
 Tutorial
     Create tutorial system
     Add Instruction of movement and the goal.

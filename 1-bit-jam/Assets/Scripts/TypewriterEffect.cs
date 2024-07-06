@@ -23,7 +23,7 @@ public class TypewriterEffect : MonoBehaviour
         {
             currentText = fullText.Substring(0, i);
             textComponent.text = currentText;
-            Debug.Log("Current text: " + currentText);
+            // Debug.Log("Current text: " + currentText);
             yield return new WaitForSeconds(delay);
         }
      StartCoroutine(FadeOutText());

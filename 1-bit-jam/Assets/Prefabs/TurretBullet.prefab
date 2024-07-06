@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7383959876752191919}
   - component: {fileID: 7383959876752191918}
   - component: {fileID: 8289896368528595093}
+  - component: {fileID: 7329754311003161375}
   m_Layer: 0
   m_Name: TurretBullet
   m_TagString: Untagged
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 8289896368528595093}
   angleChangingSpeed: 200
-  movementSpeed: 8
+  movementSpeed: 5.08
 --- !u!50 &8289896368528595093
 Rigidbody2D:
   serializedVersion: 4
@@ -122,3 +123,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &7329754311003161375
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383959876752191917}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

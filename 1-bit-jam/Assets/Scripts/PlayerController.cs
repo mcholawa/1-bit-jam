@@ -76,6 +76,10 @@ public class PlayerController : MonoBehaviour
         {
             GameManagerScript.GameOver();
         }
+        else if (col.gameObject.name.Contains("TurretBullet"))
+        {
+            GameManagerScript.GameOver();
+        }
 
     }
     //Function used in Array.Find for checking UpArrow and DownArrow movement :)
