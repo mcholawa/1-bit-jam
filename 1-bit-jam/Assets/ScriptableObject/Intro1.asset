@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f8a1b1e48ed3d4d91fca279d190ddf, type: 3}
   m_Name: Intro1
   m_EditorClassIdentifier: 
-  content: In the vast universe. There was a tiny fragment of energy.
+  content: Somewhere in the vast universe. There was a tiny fragment of energy.

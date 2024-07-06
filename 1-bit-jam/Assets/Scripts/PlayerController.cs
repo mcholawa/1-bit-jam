@@ -7,9 +7,9 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     public int movementIndex = 0;
-    public GameObject gameMenagerObject;
+    public GameObject GameManagerObject;
     public int speed = 1;
-    private GameMenager gameMenagerScript;
+    private GameManager GameManagerScript;
     private bool isMoving = false;
     private SpriteRenderer playerSprite;
     public int energyCost;
@@ -27,10 +27,10 @@ public class PlayerController : MonoBehaviour
     {
         energyCost = -5;
         playerSprite = GetComponent<SpriteRenderer>();
-        gameMenagerScript = gameMenagerObject.GetComponent<GameMenager>();
-        //Debug.Log(gameMenagerScript.posts.Length);
+        GameManagerScript = GameManagerObject.GetComponent<GameManager>();
+        //Debug.Log(GameManagerScript.posts.Length);
         spriteMask = gameObject.transform.GetChild(0).gameObject;
-        currentPosts = gameMenagerScript.posts;
+        currentPosts = GameManagerScript.posts;
     }
 
     // Update is called once per frame
@@ -64,17 +64,17 @@ public class PlayerController : MonoBehaviour
         Debug.Log(col.gameObject.name + "");
         if (col.gameObject.name == "EndingGoal")
         {
-            gameMenagerScript.NextLevel();
+            GameManagerScript.NextLevel();
         }
         else if (col.gameObject.name == "EnergyBall")
         {
-            gameMenagerScript.ChangeEnergyAmount(15);
+            GameManagerScript.ChangeEnergyAmount(15);
             col.gameObject.SetActive(false);
 
         }
         else if (col.gameObject.name == "Wall")
         {
-            gameMenagerScript.GameOver();
+            GameManagerScript.GameOver();
         }
 
     }
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
                 movementIndex++;
                 isMoving = true;
                 StartCoroutine(StartCooldown());
-                gameMenagerScript.ChangeEnergyAmount(energyCost);
+                GameManagerScript.ChangeEnergyAmount(energyCost);
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) && movementIndex != 0  && 6 >= Vector2.Distance(currentPosts[movementIndex].transform.position,currentPosts[movementIndex-1].transform.position))
             {
@@ -117,14 +117,14 @@ public class PlayerController : MonoBehaviour
                 movementIndex--;
                 isMoving = true;
                 StartCoroutine(StartCooldown());
-                gameMenagerScript.ChangeEnergyAmount(energyCost);
+                GameManagerScript.ChangeEnergyAmount(energyCost);
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow) && !isUp)
             {
-                GameObject matchingPostFound = Array.Find(gameMenagerScript.upPosts, findMatchingPostX);
+                GameObject matchingPostFound = Array.Find(GameManagerScript.upPosts, findMatchingPostX);
                  if(matchingPostFound != null){
-                    movementIndex = Array.IndexOf(gameMenagerScript.upPosts, matchingPostFound);
-                    currentPosts = gameMenagerScript.upPosts;
+                    movementIndex = Array.IndexOf(GameManagerScript.upPosts, matchingPostFound);
+                    currentPosts = GameManagerScript.upPosts;
                     isMoving = true;
                     isUp = true;
                     Debug.Log("up");
@@ -135,11 +135,11 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow) && isUp)
             {
-                GameObject matchingPostFound = Array.Find(gameMenagerScript.posts, findMatchingPostX);
+                GameObject matchingPostFound = Array.Find(GameManagerScript.posts, findMatchingPostX);
                 if(matchingPostFound != null){
-                movementIndex = Array.IndexOf(gameMenagerScript.posts, matchingPostFound);
+                movementIndex = Array.IndexOf(GameManagerScript.posts, matchingPostFound);
                 isMoving = true;
-                 currentPosts = gameMenagerScript.posts;
+                 currentPosts = GameManagerScript.posts;
                 isUp = false;
                 Debug.Log("down");
                 StartCoroutine(StartCooldown());
@@ -162,10 +162,10 @@ public class PlayerController : MonoBehaviour
     //Key Input 
     void spaceEvent()
     {
-        if (gameMenagerScript.energy > 10 && !isExpanding)
+        if (GameManagerScript.energy > 10 && !isExpanding)
         {
             isExpanding = true;
-            gameMenagerScript.ChangeEnergyAmount(-10);
+            GameManagerScript.ChangeEnergyAmount(-10);
         }
     }
 

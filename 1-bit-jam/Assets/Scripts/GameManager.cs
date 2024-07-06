@@ -5,7 +5,7 @@ using System.Linq;
 using TMPro;
 
 
-public class GameMenager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public GameObject[] posts;
      public GameObject[] upPosts;
