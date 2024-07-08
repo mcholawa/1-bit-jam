@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     //game over event
     public void GameOver()
     {
+        AudioManager.instance.PlayDeathSound();
+        AudioManager.instance.StopBackgroundSounds();
         GameOverScreen.Setup();
         player.SetActive(false);
         CancelInvoke();

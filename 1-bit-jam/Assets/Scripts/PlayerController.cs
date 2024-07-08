@@ -107,47 +107,84 @@ public class PlayerController : MonoBehaviour
         if (IsAvailable)
         {
             //if right arrow is pressed AND it is not the last post AND there is no gap
-            if (Input.GetKeyDown(KeyCode.RightArrow) && movementIndex < currentPosts.Length - 1 && 6 >= Vector2.Distance(currentPosts[movementIndex].transform.position,currentPosts[movementIndex+1].transform.position))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                Debug.Log("right");
-                movementIndex++;
-                isMoving = true;
-                StartCoroutine(StartCooldown());
-                GameManagerScript.ChangeEnergyAmount(energyCost);
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow) && movementIndex != 0  && 6 >= Vector2.Distance(currentPosts[movementIndex].transform.position,currentPosts[movementIndex-1].transform.position))
-            {
-                Debug.Log("left");
-                movementIndex--;
-                isMoving = true;
-                StartCoroutine(StartCooldown());
-                GameManagerScript.ChangeEnergyAmount(energyCost);
-            }
-            else if (Input.GetKeyDown(KeyCode.UpArrow) && !isUp)
-            {
-                GameObject matchingPostFound = Array.Find(GameManagerScript.upPosts, findMatchingPostX);
-                 if(matchingPostFound != null){
-                    movementIndex = Array.IndexOf(GameManagerScript.upPosts, matchingPostFound);
-                    currentPosts = GameManagerScript.upPosts;
+                if (movementIndex < currentPosts.Length - 1 && 6 >= Vector2.Distance(currentPosts[movementIndex].transform.position, currentPosts[movementIndex + 1].transform.position))
+                {
+                    Debug.Log("right");
+                    movementIndex++;
                     isMoving = true;
-                    isUp = true;
-                    Debug.Log("up");
                     StartCoroutine(StartCooldown());
+                    GameManagerScript.ChangeEnergyAmount(energyCost);
+                    AudioManager.instance.PlayPlayerMovementSound();
                 }
-               
+                else
+                {
+                    AudioManager.instance.PlayCantMoveSound();
+                }
 
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow) && isUp)
-            {
-                GameObject matchingPostFound = Array.Find(GameManagerScript.posts, findMatchingPostX);
-                if(matchingPostFound != null){
-                movementIndex = Array.IndexOf(GameManagerScript.posts, matchingPostFound);
-                isMoving = true;
-                 currentPosts = GameManagerScript.posts;
-                isUp = false;
-                Debug.Log("down");
-                StartCoroutine(StartCooldown());
+            else if (Input.GetKeyDown(KeyCode.LeftArrow)){
+
+                if (movementIndex != 0 && 6 >= Vector2.Distance(currentPosts[movementIndex].transform.position, currentPosts[movementIndex - 1].transform.position))
+                {
+                    Debug.Log("left");
+                    movementIndex--;
+                    isMoving = true;
+                    StartCoroutine(StartCooldown());
+                    GameManagerScript.ChangeEnergyAmount(energyCost);
+                    AudioManager.instance.PlayPlayerMovementSound();
                 }
+                else
+                {
+                    AudioManager.instance.PlayCantMoveSound();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (isUp) { AudioManager.instance.PlayCantMoveSound(); }
+                else
+                {
+                    GameObject matchingPostFound = Array.Find(GameManagerScript.upPosts, findMatchingPostX);
+                    if (matchingPostFound != null)
+                    {
+                        movementIndex = Array.IndexOf(GameManagerScript.upPosts, matchingPostFound);
+                        currentPosts = GameManagerScript.upPosts;
+                        isMoving = true;
+                        isUp = true;
+                        Debug.Log("up");
+                        AudioManager.instance.PlayPlayerMovementSound();
+                        StartCoroutine(StartCooldown());
+                    }
+                    else
+                    {
+                        AudioManager.instance.PlayCantMoveSound();
+                    }
+                }
+
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (!isUp) { AudioManager.instance.PlayCantMoveSound(); }
+                else
+                {
+                    GameObject matchingPostFound = Array.Find(GameManagerScript.posts, findMatchingPostX);
+                    if (matchingPostFound != null)
+                    {
+                        movementIndex = Array.IndexOf(GameManagerScript.posts, matchingPostFound);
+                        isMoving = true;
+                        currentPosts = GameManagerScript.posts;
+                        isUp = false;
+                        Debug.Log("down");
+                        StartCoroutine(StartCooldown());
+                        AudioManager.instance.PlayPlayerMovementSound();
+                    }
+                    else
+                    {
+                        AudioManager.instance.PlayCantMoveSound();
+                    }
+                }
+
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -177,11 +214,11 @@ public class PlayerController : MonoBehaviour
     {
         IsAvailable = false;
         Debug.Log(CooldownDuration);
-        playerSprite.color = new Color (1f,1f,1f,0.3f);
+        playerSprite.color = new Color(1f, 1f, 1f, 0.3f);
         yield return new WaitForSeconds(CooldownDuration);
 
         IsAvailable = true;
         Debug.Log("not Cooldown");
-        playerSprite.color = new Color (1f,1f,1f,1f);
+        playerSprite.color = new Color(1f, 1f, 1f, 1f);
     }
 }
