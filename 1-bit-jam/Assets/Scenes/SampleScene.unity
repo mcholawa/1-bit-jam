@@ -808,9 +808,13 @@ MonoBehaviour:
   playerMovementSource: {fileID: 453439124}
   ambientSource: {fileID: 453439128}
   musicSource: {fileID: 453439127}
-  playerMovementClips: []
+  playerMovementClips:
+  - {fileID: 8300000, guid: a18a505aadf5a8c4b8a0b2b148015e84, type: 3}
+  - {fileID: 8300000, guid: ea3cf9f1c7df2ab4f9ba8af35cd0ed9b, type: 3}
+  - {fileID: 8300000, guid: b2172cea22a202945a6dce3c7ceefd8e, type: 3}
   ambientClip: {fileID: 8300000, guid: 198e24affdd940d4eadca27733b4194c, type: 3}
   musicClip: {fileID: 8300000, guid: be9cd85fae008d64485586fdb5b99723, type: 3}
+  deathClip: {fileID: 8300000, guid: c592f0f5b0ca8a640b7160edd3333999, type: 3}
   cantMoveClip: {fileID: 8300000, guid: eec498ac158476a4bb7557499ebb3d97, type: 3}
 --- !u!4 &453439126
 Transform:

@@ -15,10 +15,12 @@ public class TypewriterEffect : MonoBehaviour
         Debug.Log("Start method executed. Text component found: " + (textComponent != null));
         Debug.Log("Full text: " + fullText);
         StartCoroutine(ShowText());
+        AudioManager.instance.PlayTypingSound();
     }
 
     IEnumerator ShowText()
     {
+        
         for (int i = 0; i <= fullText.Length; i++)
         {
             currentText = fullText.Substring(0, i);
@@ -49,7 +51,8 @@ public class TypewriterEffect : MonoBehaviour
         Color finalColor = textComponent.color;
         finalColor.a = 0;
         textComponent.color = finalColor;
-
+        //stop the typing sound
+        AudioManager.instance.typingSource.Stop();
          // Destroy the parent GameObject after fade-out
         if (transform.parent != null)
         {

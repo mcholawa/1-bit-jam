@@ -7,12 +7,14 @@ public class AudioManager : MonoBehaviour
     public AudioSource playerMovementSource;
     public AudioSource ambientSource;
     public AudioSource musicSource;
+    public AudioSource typingSource;
 
     public AudioClip[] playerMovementClips;
     public AudioClip ambientClip;
     public AudioClip musicClip;
     public AudioClip deathClip;
     public AudioClip cantMoveClip;
+    public AudioClip typingClip;
 
     private void Awake()
     {
@@ -29,6 +31,10 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        if (typingClip != null){
+            typingSource.clip = typingClip;
+            typingSource.loop = true;
+        }
         if (ambientClip != null)
         {
             ambientSource.clip = ambientClip;
@@ -45,9 +51,16 @@ public class AudioManager : MonoBehaviour
             musicSource.Play();
         }
     }
-
+    public void PlayTypingSound(){
+        Debug.Log("playing typing");
+        typingSource.Play();
+    }
+    public void StopTypingSound(){
+        typingSource.Stop();
+    }
     public void PlayPlayerMovementSound()
     {
+        playerMovementSource.volume = 0.3f;
         if (playerMovementClips.Length > 0)
         {
             int index = Random.Range(0, playerMovementClips.Length);
@@ -57,6 +70,7 @@ public class AudioManager : MonoBehaviour
     }
      public void PlayDeathSound(){
         if (deathClip != null){
+           // Debug.Log("death sound");
             playerMovementSource.clip = deathClip;
             playerMovementSource.Play();
         }
@@ -69,8 +83,13 @@ public class AudioManager : MonoBehaviour
     }
     public void StopBackgroundSounds(){
         ambientSource.Stop();
-        playerMovementSource.Stop();
+        //playerMovementSource.Stop();
         musicSource.Stop();
+    }
+     public void PlayBackgroundSounds(){
+        ambientSource.Play();
+        //playerMovementSource.Stop();
+        musicSource.Play();
     }
     public void SetAmbientVolume(float volume)
     {

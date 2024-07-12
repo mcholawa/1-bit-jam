@@ -10,6 +10,7 @@ public class GameOverScreen : MonoBehaviour
     }
     public void RestartButton(){
         SceneManager.LoadScene("SampleScene");
+        AudioManager.instance.PlayBackgroundSounds();
     }
     public void ExitButton(){
         SceneManager.LoadScene("MainMenuScene");
