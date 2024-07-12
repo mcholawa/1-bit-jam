@@ -4,9 +4,9 @@ Make narration system:
     + Figure out how to save and manage text content for the game
 Pick music (3 songs for 3 levels)
 SFX:
-    Buzzing - when movement is not available
-    Zap when moving
-    constant ambience electric sounds
+    + Buzzing - when movement is not available
+    + Zap when moving
+    + constant ambience electric sounds
     this ambience should be louder when activating "spacebar" lightup
 Level maker
     Figure out how to implement level system maker:

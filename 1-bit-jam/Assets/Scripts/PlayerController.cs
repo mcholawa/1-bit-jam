@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
         //scaling the mask 
         if (isExpanding)
         {
+            AudioManager.instance.SetAmbientVolume(0.7f);
             spriteMask.transform.localScale += scaleChange * Time.deltaTime * scaleSpeed;
             if (Vector3.Distance(spriteMask.transform.localScale, new Vector3(16f, 16f, 16f)) < 1.0f)
             {
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
             {
                 isExpanding = false;
                 scaleChange = -scaleChange;
+                AudioManager.instance.SetAmbientVolume(0.3f);
             }
         }
     }
@@ -205,6 +207,7 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManagerScript.energy > 10 && !isExpanding)
         {
+
             isExpanding = true;
             GameManagerScript.ChangeEnergyAmount(-10);
         }
