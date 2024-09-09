@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(GameManagerScript.posts.Length);
         spriteMask = gameObject.transform.GetChild(0).gameObject;
         currentPosts = GameManagerScript.posts;
+        Debug.Log(currentPosts);
+        transform.position = currentPosts[0].transform.position + new Vector3(0,2f,0);
+        
     }
 
     // Update is called once per frame
