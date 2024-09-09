@@ -10,6 +10,6 @@ public class MainMenuScreen : MonoBehaviour
 
     }
     public void StartButton(){
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level1");
     }
 }

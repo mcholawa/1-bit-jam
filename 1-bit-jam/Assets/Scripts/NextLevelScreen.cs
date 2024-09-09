@@ -9,7 +9,7 @@ public class NextLevelScreen : MonoBehaviour
         gameObject.SetActive(true);
     }
     public void RestartButton(){
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level1");
     }
     public void NextLevelButton(){
         SceneManager.LoadScene("Level2");

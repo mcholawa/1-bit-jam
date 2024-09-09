@@ -9,7 +9,7 @@ public class GameOverScreen : MonoBehaviour
         gameObject.SetActive(true);
     }
     public void RestartButton(){
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level1");
         AudioManager.instance.PlayBackgroundSounds();
     }
     public void ExitButton(){

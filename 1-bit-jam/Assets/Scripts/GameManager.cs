@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
         energy = 100;
         posts = GameObject.FindGameObjectsWithTag("Post").OrderBy(go => go.transform.position.x).ToArray();
         upPosts = GameObject.FindGameObjectsWithTag("UpPost").OrderBy(go => go.transform.position.x).ToArray();
-       // Debug.Log(posts[0]);
         InvokeRepeating("DecreaseEnergy", 0, 1.0f);
         TriggerNextNarration();
         player.SetActive(true);
@@ -31,7 +30,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(posts[0]);
          if (energy <= 0){GameOver();}
     }
     //game over event

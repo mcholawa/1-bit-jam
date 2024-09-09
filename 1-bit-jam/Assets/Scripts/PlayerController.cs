@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(GameManagerScript.posts.Length);
         spriteMask = gameObject.transform.GetChild(0).gameObject;
         currentPosts = GameManagerScript.posts;
-        Debug.Log(currentPosts);
         transform.position = currentPosts[0].transform.position + new Vector3(0,2f,0);
         
     }
@@ -45,12 +44,13 @@ public class PlayerController : MonoBehaviour
         if (isExpanding)
         {
             AudioManager.instance.SetAmbientVolume(0.7f);
+            Debug.Log(spriteMask.transform.localScale);
             spriteMask.transform.localScale += scaleChange * Time.deltaTime * scaleSpeed;
-            if (Vector3.Distance(spriteMask.transform.localScale, new Vector3(16f, 16f, 16f)) < 1.0f)
+            if (Vector3.Distance(spriteMask.transform.localScale, new Vector3(16f, 16f, 16f)) < 2.0f)
             {
                 scaleChange = -scaleChange;
             }
-            else if (Vector3.Distance(spriteMask.transform.localScale, new Vector3(4f, 4f, 4f)) < 1.0f && scaleChange.x < 0)
+            else if (Vector3.Distance(spriteMask.transform.localScale, new Vector3(4f, 4f, 4f)) < 2.0f && scaleChange.x < 0)
             {
                 isExpanding = false;
                 scaleChange = -scaleChange;
@@ -195,13 +195,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Space");
-            //print all posts
-            foreach (var item in currentPosts)
-            {
-                Debug.Log(item.ToString());
-            }
-            Debug.Log("movement index:");
-            Debug.Log(movementIndex);
             spaceEvent();
         }
     }
