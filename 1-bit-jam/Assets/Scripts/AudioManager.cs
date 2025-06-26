@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
     }
      public void PlayDeathSound(){
         if (deathClip != null){
-           // Debug.Log("death sound");
+            Debug.Log("death sound");
             playerMovementSource.clip = deathClip;
             playerMovementSource.Play();
         }
@@ -81,10 +81,12 @@ public class AudioManager : MonoBehaviour
             playerMovementSource.Play();
         }
     }
-    public void StopBackgroundSounds(){
+    public void StopBackgroundSounds()
+    {
         ambientSource.Stop();
         //playerMovementSource.Stop();
         musicSource.Stop();
+        playerMovementSource.Stop();
     }
      public void PlayBackgroundSounds(){
         ambientSource.Play();

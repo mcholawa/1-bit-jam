@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.PlayDeathSound();
         AudioManager.instance.StopBackgroundSounds();
+        AudioManager.instance.StopTypingSound();
+
         GameOverScreen.Setup();
         player.SetActive(false);
         CancelInvoke();

@@ -34,9 +34,9 @@ public class TypewriterEffect : MonoBehaviour
     IEnumerator FadeOutText()
     {
         float startAlpha = textComponent.color.a;
-        float rate = 1.0f / 1f;
+        float rate = 2.0f;
         float progress = 0.0f;
-
+        AudioManager.instance.typingSource.Stop();
         while (progress < 1.0f)
         {
             Color tmpColor = textComponent.color;
@@ -52,7 +52,7 @@ public class TypewriterEffect : MonoBehaviour
         finalColor.a = 0;
         textComponent.color = finalColor;
         //stop the typing sound
-        AudioManager.instance.typingSource.Stop();
+        
          // Destroy the parent GameObject after fade-out
         if (transform.parent != null)
         {
